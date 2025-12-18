@@ -4,6 +4,7 @@ import { MotionReveal } from "@/components/MotionReveal";
 import { Surface } from "@/components/Surface";
 import { Button } from "@/components/Button";
 import { SectionHeading } from "@/components/SectionHeading";
+import { TypewriterCycle } from "@/components/TypewriterCycle";
 import { site } from "@/lib/site";
 import { asset } from "@/lib/assets";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
@@ -37,19 +38,17 @@ export default function HomePage() {
           <div className="grid items-center gap-10 lg:grid-cols-12">
             <MotionReveal className="lg:col-span-6">
               <Surface className="p-7 sm:p-9" tint="violet">
-                <p className="text-xs font-semibold uppercase tracking-widest text-brand-700/90 dark:text-brand-300/90">
-                  Visibility engineered
-                </p>
-                <h1 className="mt-3 text-3xl font-semibold tracking-tight text-slate-950 dark:text-white sm:text-4xl">
-                  A disciplined SEO system designed for modern search.
+                <h1 className="text-3xl font-semibold tracking-tight text-slate-950 dark:text-white sm:text-4xl">
+                  <span className="uppercase">
+                    WE GENERATE MORE{" "}
+                    <TypewriterCycle
+                      words={["REVENUE", "LEADS", "TRAFFIC"]}
+                      className="text-red-600 dark:text-red-400"
+                    />
+                  </span>
                 </h1>
-                <p className="mt-4 text-base leading-relaxed text-slate-700 dark:text-slate-200">
-                  In a fast paced landscape, teams need clarity. We focus on the work
-                  that improves crawlability, relevance, authority, and performance,
-                  so growth is repeatable.
-                </p>
 
-                <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+                <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
                   <Button href="/contact">
                     Request a Strategy Call <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
@@ -75,7 +74,7 @@ export default function HomePage() {
               <Surface className="p-3 sm:p-4" tint="cyan">
                 <div className="relative overflow-hidden rounded-2xl">
                   <Image
-                    src={asset("/images/hero-placeholde.jpg")}
+                    src={asset("/images/hero-placeholder.jpg")}
                     alt="Tofamac SEO hero visual"
                     width={1200}
                     height={900}
