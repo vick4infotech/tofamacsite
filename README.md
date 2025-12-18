@@ -1,93 +1,90 @@
-# Tofamac SEO Website (Next.js + Tailwind + Framer Motion)
+# Tofamac SEO Website
 
-High-fidelity, production-ready marketing site for **Tofamac SEO** built with:
-- **Next.js (App Router)** + **TypeScript**
-- **Tailwind CSS**
-- **Framer Motion**
-- **Lucide icons**
-- **Next.js `<Image />`** for all images
-- **Vanilla form handling + fetch** (no external form services)
+Production ready marketing website for Tofamac SEO built with:
 
-## 1) Run locally
+- Next.js (App Router)
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- Nodemailer (server side email)
+
+## Run locally
+
+1. Install dependencies
 
 ```bash
 npm install
+```
+
+2. Add environment variables
+
+Create a `.env.local` in the project root:
+
+```bash
+SMTP_HOST=your_smtp_host
+SMTP_PORT=587
+SMTP_USER=your_smtp_username
+SMTP_PASS=your_smtp_password
+SMTP_FROM=notifications@yourdomain.com
+```
+
+3. Start dev server
+
+```bash
 npm run dev
 ```
 
-Open `http://localhost:3000`.
+Visit `http://localhost:3000`.
 
-## 2) Contact form (real email sending)
+## Contact form
 
-The contact form POSTs to `POST /api/contact` and sends enquiries to:
+The contact form posts to `/api/contact` and sends enquiries to:
 
-**admin@tofamacseo.com**
+- `admin@tofamacseo.com`
 
-### Configure SMTP (required)
-Create `.env.local` from `.env.example` and fill in:
+The API route requires SMTP variables above.
 
-- `SMTP_HOST`
-- `SMTP_PORT`
-- `SMTP_USER`
-- `SMTP_PASS`
-- (Optional) `FROM_EMAIL`
+## Replace images
 
-Example:
-
-```bash
-cp .env.example .env.local
-```
-
-> On Vercel, add these environment variables in **Project Settings → Environment Variables**.
-
-## 3) Replace placeholder images
-
-All site placeholders are stored in:
+Replace these placeholder images in:
 
 `/public/images/`
 
-Replace these files **in place** (same filenames) to avoid code changes:
+- hero-placeholder.jpg
+- team-placeholder.jpg
+- services-placeholder.jpg
+- analytics-placeholder.jpg
+- office-placeholder.jpg
 
-- `hero-placeholder.jpg`
-- `team-placeholder.jpg`
-- `services-placeholder.jpg`
-- `analytics-placeholder.jpg`
-- `office-placeholder.jpg`
+They are normal files. Replace them with the same filenames and the site updates automatically.
 
-## 4) Replace / update brand assets
+### If an image does not appear to change
+If you replace an image file but still see the old version, it is usually browser or optimizer caching.
 
-Provided logo assets are stored in:
+Option A (fast): hard refresh your browser.
+
+Option B (reliable): bump this env var in `.env.local`:
+
+```bash
+NEXT_PUBLIC_ASSET_VERSION=2
+```
+
+Then restart the dev server (or redeploy on Vercel). The code appends `?v=...` to image URLs to bust caches.
+
+## Replace brand assets
+
+Logos live in:
 
 `/public/brand/`
 
-Primary usage:
-- `logo-full-color.png` → used on light backgrounds (navbar)
-- `logo-wordmark-white.png` → used on dark backgrounds (footer)
+- logo-primary.png (navbar, footer)
+- logo-mark.png (icon source)
 
-You can swap those images without touching code.
+## Dark mode
 
-## 5) Update site content
+A theme toggle is available in the navbar.
+Preference is stored in localStorage under `tofamac_theme`.
 
-Most reusable content lives in:
+## Deploy
 
-- `lib/site.ts` (services list, FAQs, nav items, site meta)
-
-Page-specific layout/content is in:
-
-- `app/page.tsx` (Home)
-- `app/about/page.tsx` (About Us)
-- `app/services/page.tsx` (Services)
-- `app/contact/page.tsx` (Contact)
-
-Mission / Vision / Promise text is intentionally kept verbatim in `app/about/page.tsx`.
-
-## 6) Deployment
-
-This project is **Vercel-compatible** out of the box:
-
-```bash
-npm run build
-npm run start
-```
-
-Make sure the SMTP environment variables are set in your hosting provider.
+This project is Vercel compatible. Add the SMTP environment variables in Vercel settings.

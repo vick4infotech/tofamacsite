@@ -25,7 +25,7 @@ export function Navbar() {
   }, [pathname]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-black/5 bg-white/70 backdrop-blur dark:border-white/10 dark:bg-slate-950/60">
+    <header className="sticky top-0 z-50 border-b border-black/5 bg-white/65 backdrop-blur dark:border-white/10 dark:bg-slate-950/70">
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-3 shrink-0">
           <Image
@@ -60,7 +60,7 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-2 shrink-0">
-          <ThemeToggle className="hidden sm:inline-flex" />
+          <ThemeToggle className="inline-flex" />
           <Button href="/contact" className="hidden md:inline-flex">
             Request a Strategy Call <ArrowRight className="ml-2 h-4 w-4" />
           </Button>

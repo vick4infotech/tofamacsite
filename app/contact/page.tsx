@@ -5,6 +5,7 @@ import { Surface } from "@/components/Surface";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ContactForm } from "@/components/ContactForm";
 import { site } from "@/lib/site";
+import { asset } from "@/lib/assets";
 
 export default function ContactPage() {
   return (
@@ -31,7 +32,7 @@ export default function ContactPage() {
                 <Surface className="p-3 sm:p-4" tint="amber">
                   <div className="relative overflow-hidden rounded-2xl">
                     <Image
-                      src="/images/office-placeholder.jpg"
+                      src={asset("/images/office-placeholder.jpg")}
                       alt="Office placeholder"
                       width={1200}
                       height={900}

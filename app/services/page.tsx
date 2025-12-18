@@ -5,6 +5,7 @@ import { Surface } from "@/components/Surface";
 import { Button } from "@/components/Button";
 import { SectionHeading } from "@/components/SectionHeading";
 import { site } from "@/lib/site";
+import { asset } from "@/lib/assets";
 import { ArrowRight } from "lucide-react";
 
 function slugify(s: string) {
@@ -47,7 +48,7 @@ export default function ServicesPage() {
               <Surface className="p-3 sm:p-4" tint="cyan">
                 <div className="relative overflow-hidden rounded-2xl">
                   <Image
-                    src="/images/services-placeholder.jpg"
+                    src={asset("/images/services-placeholder.jpg")}
                     alt="Services placeholder"
                     width={1200}
                     height={900}

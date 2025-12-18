@@ -14,9 +14,13 @@ html.dark {
 }
 
 ::selection {
-  background: rgba(124, 77, 255, 0.25);
+  background: rgba(124, 77, 255, 0.32);
 }
 
 @media (prefers-reduced-motion: reduce) {
   * { scroll-behavior: auto; }
+}
+
+html, body {
+  transition: background-color 500ms ease, color 500ms ease;
 }

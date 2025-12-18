@@ -97,8 +97,8 @@ export function ContactForm() {
             onChange={(e) => update("message", e.target.value)}
             rows={6}
             className={cn(
-              "w-full rounded-xl border border-black/10 bg-white/70 px-4 py-3 text-sm text-slate-900 shadow-emboss outline-none backdrop-blur",
-              "focus:ring-2 focus:ring-brand-400/60 dark:border-white/10 dark:bg-white/10 dark:text-white dark:shadow-emboss-dark"
+              "w-full rounded-xl border border-black/10 bg-white/75 px-4 py-3 text-sm text-slate-900 shadow-emboss outline-none backdrop-blur",
+              "focus:ring-2 focus:ring-brand-400/60 dark:border-white/10 dark:bg-slate-900/40 dark:text-white dark:shadow-emboss-dark"
             )}
             placeholder="Tell us what you want to improve and what success should look like."
           />
@@ -166,8 +166,8 @@ function Field({
         autoComplete={autoComplete}
         inputMode={inputMode}
         className={cn(
-          "w-full rounded-xl border border-black/10 bg-white/70 px-4 py-3 text-sm text-slate-900 shadow-emboss outline-none backdrop-blur",
-          "focus:ring-2 focus:ring-brand-400/60 dark:border-white/10 dark:bg-white/10 dark:text-white dark:shadow-emboss-dark"
+          "w-full rounded-xl border border-black/10 bg-white/75 px-4 py-3 text-sm text-slate-900 shadow-emboss outline-none backdrop-blur",
+          "focus:ring-2 focus:ring-brand-400/60 dark:border-white/10 dark:bg-slate-900/40 dark:text-white dark:shadow-emboss-dark"
         )}
       />
       {error ? (

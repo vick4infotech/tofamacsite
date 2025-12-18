@@ -18,9 +18,10 @@ export function ThemeToggle({ className }: { className?: string }) {
       onClick={ctx.toggle}
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
       className={cn(
-        "relative inline-flex h-10 w-10 items-center justify-center rounded-xl",
-        "border border-black/10 bg-white/60 shadow-emboss backdrop-blur hover:bg-white/80",
-        "transition-colors duration-200 dark:border-white/10 dark:bg-white/10 dark:hover:bg-white/15",
+        "inline-flex items-center justify-center rounded-xl border shadow-emboss backdrop-blur transition-colors duration-500",
+        "border-black/10 bg-gradient-to-br from-brand-100/70 via-white/50 to-cyan-100/60 hover:from-brand-100/90 hover:to-cyan-100/80",
+        "dark:border-white/12 dark:bg-white/8 dark:hover:bg-white/12 dark:shadow-emboss-dark",
+        "h-10 w-10",
         className
       )}
     >

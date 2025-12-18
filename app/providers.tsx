@@ -2,6 +2,8 @@
 
 import React from "react";
 
+const useIsomorphicLayoutEffect = typeof window !== "undefined" ? React.useLayoutEffect : React.useEffect;
+
 type Theme = "light" | "dark";
 
 function getInitialTheme(): Theme {
@@ -19,7 +21,7 @@ export const ThemeContext = React.createContext<{
 export function Providers({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = React.useState<Theme>("light");
 
-  React.useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const t = getInitialTheme();
     setTheme(t);
     document.documentElement.classList.toggle("dark", t === "dark");

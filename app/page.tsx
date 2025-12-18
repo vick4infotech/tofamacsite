@@ -5,6 +5,7 @@ import { Surface } from "@/components/Surface";
 import { Button } from "@/components/Button";
 import { SectionHeading } from "@/components/SectionHeading";
 import { site } from "@/lib/site";
+import { asset } from "@/lib/assets";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 const pillars = [
@@ -74,7 +75,7 @@ export default function HomePage() {
               <Surface className="p-3 sm:p-4" tint="cyan">
                 <div className="relative overflow-hidden rounded-2xl">
                   <Image
-                    src="/images/hero-placehold.jpg"
+                    src={asset("/images/hero-placeholde.jpg")}
                     alt="Tofamac SEO hero visual"
                     width={1200}
                     height={900}
