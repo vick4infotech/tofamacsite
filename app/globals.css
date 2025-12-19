@@ -14,7 +14,13 @@ html.dark {
 }
 
 ::selection {
-  background: rgba(124, 77, 255, 0.32);
+  /* Brand blue selection (matches provided logo palette) */
+  background: rgba(44, 62, 246, 0.24);
+}
+
+/* User request: headings are uppercase across the site */
+h1, h2, h3, h4 {
+  text-transform: uppercase;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -38,9 +38,11 @@ export default function HomePage() {
           <div className="grid items-center gap-10 lg:grid-cols-12">
             <MotionReveal className="lg:col-span-6">
               <Surface className="p-7 sm:p-9" tint="violet">
-                <h1 className="text-3xl font-semibold tracking-tight text-slate-950 dark:text-white sm:text-4xl">
-                  <span className="uppercase">
-                    WE GENERATE MORE{" "}
+                <h1 className="text-slate-950 dark:text-white">
+                  <span className="block text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl xl:text-7xl">
+                    WE GENERATE MORE
+                  </span>
+                  <span className="mt-2 block text-5xl font-extrabold tracking-tight sm:text-6xl lg:text-7xl xl:text-8xl">
                     <TypewriterCycle
                       words={["REVENUE", "LEADS", "TRAFFIC"]}
                       className="text-red-600 dark:text-red-400"
@@ -59,11 +61,11 @@ export default function HomePage() {
 
                 <div className="mt-6 grid gap-2 text-sm text-slate-700 dark:text-slate-200">
                   <div className="flex items-start gap-2">
-                    <CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-600 dark:text-emerald-400" />
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 text-accent-600 dark:text-accent-400" />
                     <span>Clear scope, measurable work, accountable delivery.</span>
                   </div>
                   <div className="flex items-start gap-2">
-                    <CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-600 dark:text-emerald-400" />
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 text-accent-600 dark:text-accent-400" />
                     <span>Built for Africa and competitive global markets.</span>
                   </div>
                 </div>
@@ -93,7 +95,7 @@ export default function HomePage() {
                       <p className="text-xs font-semibold uppercase tracking-widest text-brand-700/90 dark:text-brand-300/90">
                         {p.title}
                       </p>
-                      <p className="mt-2 text-sm font-semibold text-slate-950 dark:text-white">
+                      <p className="mt-2 text-sm font-semibold uppercase tracking-wide text-slate-950 dark:text-white">
                         {p.headline}
                       </p>
                       <p className="mt-1 text-sm text-slate-700 dark:text-slate-200">
@@ -123,7 +125,7 @@ export default function HomePage() {
               <div className="grid gap-4 sm:grid-cols-2">
                 {site.services.slice(0, 4).map((s) => (
                   <Surface key={s.title} className="p-6" tint="emerald">
-                    <p className="text-base font-semibold text-slate-950 dark:text-white">
+                    <p className="text-base font-semibold uppercase tracking-wide text-slate-950 dark:text-white">
                       {s.title}
                     </p>
                     <p className="mt-2 text-sm leading-relaxed text-slate-700 dark:text-slate-200">

@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/Rotciv/Desktop/New%20folder/tofamacsite/app/template.tsx"],"sourcesContent":["\"use client\";\n\nimport { AnimatePresence, motion } from \"framer-motion\";\nimport { usePathname } from \"next/navigation\";\n\nexport default function Template({ children }: { children: React.ReactNode }) {\n  const pathname = usePathname();\n\n  return (\n    <AnimatePresence mode=\"wait\" initial={false}>\n      <motion.main\n        key={pathname}\n        initial={{ opacity: 0, y: 10 }}\n        animate={{ opacity: 1, y: 0 }}\n        exit={{ opacity: 0, y: -8 }}\n        transition={{ duration: 0.25, ease: \"easeOut\" }}\n      >\n        {children}\n      </motion.main>\n    </AnimatePresence>\n  );\n}\n"],"names":[],"mappings":";;;;;AAEA;AAAA;AACA;;;AAHA;;;AAKe,SAAS,SAAS,EAAE,QAAQ,EAAiC;;IAC1E,MAAM,WAAW,IAAA,oJAAW;IAE5B,qBACE,6LAAC,+MAAe;QAAC,MAAK;QAAO,SAAS;kBACpC,cAAA,6LAAC,uMAAM,CAAC,IAAI;YAEV,SAAS;gBAAE,SAAS;gBAAG,GAAG;YAAG;YAC7B,SAAS;gBAAE,SAAS;gBAAG,GAAG;YAAE;YAC5B,MAAM;gBAAE,SAAS;gBAAG,GAAG,CAAC;YAAE;YAC1B,YAAY;gBAAE,UAAU;gBAAM,MAAM;YAAU;sBAE7C;WANI;;;;;;;;;;AAUb;GAhBwB;;QACL,oJAAW;;;KADN"}}]
-}

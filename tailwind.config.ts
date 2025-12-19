@@ -11,29 +11,31 @@ export default {
     extend: {
       colors: {
         brand: {
-          50: "#f6f3ff",
-          100: "#ede6ff",
-          200: "#d8ccff",
-          300: "#bca6ff",
-          400: "#9a78ff",
-          500: "#7c4dff",
-          600: "#6536f0",
-          700: "#542ad0",
-          800: "#3f229a",
-          900: "#2d1c6b"
+          // Extracted from provided logo assets (primary blue)
+          50: "#eef1ff",
+          100: "#dee3ff",
+          200: "#b9c2ff",
+          300: "#8f9cff",
+          400: "#6676ff",
+          500: "#2c3ef6",
+          600: "#2433d7",
+          700: "#1d29b5",
+          800: "#172190",
+          900: "#121a6e",
         },
-        ink: {
-          50: "#f5f7ff",
-          100: "#e9edff",
-          200: "#cfd8ff",
-          300: "#aab9ff",
-          400: "#7b90ff",
-          500: "#5268ff",
-          600: "#3346f3",
-          700: "#2737c6",
-          800: "#202f9e",
-          900: "#1c2a86"
-        }
+        accent: {
+          // Extracted from provided logo assets (supporting green)
+          50: "#ecfff7",
+          100: "#d6ffef",
+          200: "#a6ffe0",
+          300: "#6dffcd",
+          400: "#29f0b0",
+          500: "#00dc8d",
+          600: "#00b874",
+          700: "#00935e",
+          800: "#00724a",
+          900: "#005437",
+        },
       },
       boxShadow: {
         "emboss": "0 1px 0 rgba(255,255,255,0.6) inset, 0 -1px 0 rgba(0,0,0,0.08) inset, 0 10px 30px rgba(0,0,0,0.06)",

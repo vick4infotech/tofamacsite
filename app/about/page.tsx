@@ -111,7 +111,7 @@ export default function AboutPage() {
             {reasons.map((r, idx) => (
               <MotionReveal key={r.title} delay={idx * 0.03}>
                 <Surface className="p-6" tint={r.tint}>
-                  <p className="text-base font-semibold text-slate-950 dark:text-white">
+                  <p className="text-base font-semibold uppercase tracking-wide text-slate-950 dark:text-white">
                     {r.title}
                   </p>
                   <p className="mt-2 text-sm leading-relaxed text-slate-700 dark:text-slate-200">

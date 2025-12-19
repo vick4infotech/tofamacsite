@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Container } from "@/components/Container";
 import { site } from "@/lib/site";
+import { Facebook, Instagram, Twitter } from "lucide-react";
 
 export function Footer() {
   return (
@@ -19,11 +20,41 @@ export function Footer() {
             <p className="mt-4 max-w-md text-sm leading-relaxed text-slate-700 dark:text-slate-200">
               {site.description}
             </p>
+
+            <div className="mt-5 flex items-center gap-3">
+              <a
+                href="https://www.facebook.com/tofamacseo"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Tofamac SEO on Facebook"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-black/10 bg-white/70 shadow-emboss transition-colors hover:bg-white dark:border-white/12 dark:bg-white/10 dark:shadow-emboss-dark dark:hover:bg-white/15"
+              >
+                <Facebook className="h-5 w-5 text-brand-700 dark:text-brand-300" />
+              </a>
+              <a
+                href="https://www.instagram.com/tofamacseo"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Tofamac SEO on Instagram"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-black/10 bg-white/70 shadow-emboss transition-colors hover:bg-white dark:border-white/12 dark:bg-white/10 dark:shadow-emboss-dark dark:hover:bg-white/15"
+              >
+                <Instagram className="h-5 w-5 text-brand-700 dark:text-brand-300" />
+              </a>
+              <a
+                href="https://www.x.com/tofamacseo"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Tofamac SEO on X"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-black/10 bg-white/70 shadow-emboss transition-colors hover:bg-white dark:border-white/12 dark:bg-white/10 dark:shadow-emboss-dark dark:hover:bg-white/15"
+              >
+                <Twitter className="h-5 w-5 text-brand-700 dark:text-brand-300" />
+              </a>
+            </div>
           </div>
 
           <div className="grid gap-8 sm:grid-cols-3 lg:col-span-7">
             <div>
-              <p className="text-sm font-semibold text-slate-950 dark:text-white">
+              <p className="text-sm font-semibold uppercase tracking-wide text-slate-950 dark:text-white">
                 Company
               </p>
               <div className="mt-3 grid gap-2 text-sm">
@@ -40,7 +71,7 @@ export function Footer() {
             </div>
 
             <div>
-              <p className="text-sm font-semibold text-slate-950 dark:text-white">
+              <p className="text-sm font-semibold uppercase tracking-wide text-slate-950 dark:text-white">
                 Services
               </p>
               <div className="mt-3 grid gap-2 text-sm text-slate-700 dark:text-slate-200">
@@ -52,7 +83,7 @@ export function Footer() {
             </div>
 
             <div>
-              <p className="text-sm font-semibold text-slate-950 dark:text-white">
+              <p className="text-sm font-semibold uppercase tracking-wide text-slate-950 dark:text-white">
                 Contact
               </p>
               <div className="mt-3 grid gap-2 text-sm">

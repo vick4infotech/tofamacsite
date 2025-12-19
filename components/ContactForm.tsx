@@ -113,7 +113,7 @@ export function ContactForm() {
           type="submit"
           disabled={status === "sending"}
           className={cn(
-            "mt-2 inline-flex items-center justify-center rounded-xl px-4 py-3 text-sm font-semibold",
+            "mt-2 inline-flex items-center justify-center rounded-xl px-4 py-3 text-sm font-semibold uppercase tracking-wide",
             "bg-brand-600 text-white shadow-lg shadow-brand-600/20 transition-colors hover:bg-brand-700",
             "disabled:cursor-not-allowed disabled:opacity-70"
           )}
@@ -126,7 +126,7 @@ export function ContactForm() {
             className={cn(
               "text-sm font-medium",
               status === "success"
-                ? "text-emerald-700 dark:text-emerald-300"
+                ? "text-accent-700 dark:text-accent-300"
                 : status === "error"
                 ? "text-red-600 dark:text-red-300"
                 : "text-slate-700 dark:text-slate-200"

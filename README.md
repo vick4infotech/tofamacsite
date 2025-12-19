@@ -18,14 +18,16 @@ npm install
 
 2. Add environment variables
 
-Create a `.env.local` in the project root:
+Create a `.env.local` in the project root (Tofamac SEO mailbox SMTP):
 
 ```bash
-SMTP_HOST=your_smtp_host
-SMTP_PORT=587
-SMTP_USER=your_smtp_username
-SMTP_PASS=your_smtp_password
-SMTP_FROM=notifications@yourdomain.com
+SMTP_HOST=mail.tofamacseo.com
+SMTP_PORT=465
+SMTP_USER=admin@tofamacseo.com
+SMTP_PASS=...your email account password...
+
+# Recommended sender address (usually matches SMTP_USER)
+SMTP_FROM=admin@tofamacseo.com
 ```
 
 3. Start dev server

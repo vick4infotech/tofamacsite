@@ -6,6 +6,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { ContactForm } from "@/components/ContactForm";
 import { site } from "@/lib/site";
 import { asset } from "@/lib/assets";
+import { Facebook, Instagram, Twitter } from "lucide-react";
 
 export default function ContactPage() {
   return (
@@ -21,10 +22,40 @@ export default function ContactPage() {
                   description="Share your goals and current challenges. We will reply with a clear next step."
                 />
                 <div className="mt-6 grid gap-2 text-sm text-slate-700 dark:text-slate-200">
-                  <p className="font-semibold text-slate-950 dark:text-white">Email</p>
+                  <p className="font-semibold uppercase tracking-wide text-slate-950 dark:text-white">Email</p>
                   <a className="hover:text-brand-700 dark:hover:text-brand-300" href={`mailto:${site.email}`}>
                     {site.email}
                   </a>
+
+                  <div className="mt-3 flex items-center gap-3">
+                    <a
+                      href="https://www.facebook.com/tofamacseo"
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label="Tofamac SEO on Facebook"
+                      className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-black/10 bg-white/70 shadow-emboss transition-colors hover:bg-white dark:border-white/12 dark:bg-white/10 dark:shadow-emboss-dark dark:hover:bg-white/15"
+                    >
+                      <Facebook className="h-5 w-5 text-brand-700 dark:text-brand-300" />
+                    </a>
+                    <a
+                      href="https://www.instagram.com/tofamacseo"
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label="Tofamac SEO on Instagram"
+                      className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-black/10 bg-white/70 shadow-emboss transition-colors hover:bg-white dark:border-white/12 dark:bg-white/10 dark:shadow-emboss-dark dark:hover:bg-white/15"
+                    >
+                      <Instagram className="h-5 w-5 text-brand-700 dark:text-brand-300" />
+                    </a>
+                    <a
+                      href="https://www.x.com/tofamacseo"
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label="Tofamac SEO on X"
+                      className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-black/10 bg-white/70 shadow-emboss transition-colors hover:bg-white dark:border-white/12 dark:bg-white/10 dark:shadow-emboss-dark dark:hover:bg-white/15"
+                    >
+                      <Twitter className="h-5 w-5 text-brand-700 dark:text-brand-300" />
+                    </a>
+                  </div>
                 </div>
               </Surface>
 

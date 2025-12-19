@@ -15,13 +15,16 @@ export function Surface({
   tint?: "violet" | "cyan" | "amber" | "emerald";
 }) {
   const tintClass =
+    // We keep the tint API (violet/cyan/amber/emerald) for readability across pages,
+    // but map everything to the strict brand palette extracted from the logo:
+    // primary = brand blue, supporting = accent green.
     tint === "cyan"
-      ? "from-cyan-100/90 via-white/40 to-brand-50/60 dark:from-cyan-950/35 dark:to-slate-950/55"
+      ? "from-accent-100/85 via-white/50 to-brand-50/70 dark:from-accent-900/25 dark:to-slate-950/55"
       : tint === "amber"
-      ? "from-amber-100/85 via-white/40 to-fuchsia-50/55 dark:from-amber-950/35 dark:to-slate-950/55"
+      ? "from-brand-50/80 via-white/55 to-accent-50/70 dark:from-brand-900/28 dark:to-slate-950/55"
       : tint === "emerald"
-      ? "from-emerald-100/80 via-white/45 to-cyan-50/55 dark:from-emerald-950/30 dark:to-slate-950/55"
-      : "from-brand-100/90 via-fuchsia-50/45 to-cyan-50/45 dark:from-brand-950/40 dark:to-slate-950/55";
+      ? "from-accent-50/85 via-white/55 to-accent-100/75 dark:from-accent-900/22 dark:to-slate-950/55"
+      : "from-brand-100/85 via-white/55 to-brand-50/70 dark:from-brand-900/30 dark:to-slate-950/55";
 
   return (
     <div
