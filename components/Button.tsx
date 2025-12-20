@@ -30,7 +30,10 @@ export function Button({
       className={cn(
         // Uppercase is applied by request for all buttons.
         "inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-semibold uppercase tracking-wide",
-        "transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-400/60 focus:ring-offset-2 focus:ring-offset-transparent",
+        // Stronger but controlled interaction.
+        "transition-colors duration-200 transition-transform will-change-transform",
+        "hover:-translate-y-1 hover:scale-[1.02] active:translate-y-0 active:scale-[0.985]",
+        "focus:outline-none focus:ring-2 focus:ring-brand-400/60 focus:ring-offset-2 focus:ring-offset-transparent",
         styles[variant],
         className
       )}

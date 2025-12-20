@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { Container } from "@/components/Container";
 import { MotionReveal } from "@/components/MotionReveal";
+import { MotionStagger, MotionItem } from "@/components/MotionStagger";
+import { HoverLift } from "@/components/HoverLift";
 import { Surface } from "@/components/Surface";
 import { Button } from "@/components/Button";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -108,18 +110,22 @@ export default function AboutPage() {
           </MotionReveal>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {reasons.map((r, idx) => (
-              <MotionReveal key={r.title} delay={idx * 0.03}>
-                <Surface className="p-6" tint={r.tint}>
+            <MotionStagger className="contents">
+              {reasons.map((r) => (
+                <MotionItem key={r.title}>
+                  <HoverLift>
+                    <Surface className="p-6" tint={r.tint}>
                   <p className="text-base font-semibold uppercase tracking-wide text-slate-950 dark:text-white">
                     {r.title}
                   </p>
                   <p className="mt-2 text-sm leading-relaxed text-slate-700 dark:text-slate-200">
                     {r.body}
                   </p>
-                </Surface>
-              </MotionReveal>
-            ))}
+                    </Surface>
+                  </HoverLift>
+                </MotionItem>
+              ))}
+            </MotionStagger>
           </div>
         </Container>
       </section>
@@ -127,38 +133,46 @@ export default function AboutPage() {
       <section className="relative mt-14 sm:mt-20 pb-16 sm:pb-24">
         <Container>
           <div className="grid gap-6 lg:grid-cols-12 lg:items-stretch">
-            <MotionReveal className="lg:col-span-4">
-              <Surface className="h-full p-7" tint="violet">
+            <MotionStagger className="contents">
+              <MotionItem className="lg:col-span-4">
+                <HoverLift>
+                  <Surface className="h-full p-7" tint="violet">
                 <p className="text-xs font-semibold uppercase tracking-widest text-brand-700/90 dark:text-brand-300/90">
                   Our Mission
                 </p>
                 <p className="mt-3 text-sm leading-relaxed text-slate-700 dark:text-slate-200">
                   {site.mission}
                 </p>
-              </Surface>
-            </MotionReveal>
+                  </Surface>
+                </HoverLift>
+              </MotionItem>
 
-            <MotionReveal className="lg:col-span-4" delay={0.05}>
-              <Surface className="h-full p-7" tint="cyan">
+              <MotionItem className="lg:col-span-4">
+                <HoverLift>
+                  <Surface className="h-full p-7" tint="cyan">
                 <p className="text-xs font-semibold uppercase tracking-widest text-brand-700/90 dark:text-brand-300/90">
                   Our Vision
                 </p>
                 <p className="mt-3 text-sm leading-relaxed text-slate-700 dark:text-slate-200">
                   {site.vision}
                 </p>
-              </Surface>
-            </MotionReveal>
+                  </Surface>
+                </HoverLift>
+              </MotionItem>
 
-            <MotionReveal className="lg:col-span-4" delay={0.1}>
-              <Surface className="h-full p-7" tint="amber">
+              <MotionItem className="lg:col-span-4">
+                <HoverLift>
+                  <Surface className="h-full p-7" tint="amber">
                 <p className="text-xs font-semibold uppercase tracking-widest text-brand-700/90 dark:text-brand-300/90">
                   Our Promise
                 </p>
                 <p className="mt-3 text-sm leading-relaxed text-slate-700 dark:text-slate-200">
                   {site.promise}
                 </p>
-              </Surface>
-            </MotionReveal>
+                  </Surface>
+                </HoverLift>
+              </MotionItem>
+            </MotionStagger>
           </div>
 
           <div className="mt-8">

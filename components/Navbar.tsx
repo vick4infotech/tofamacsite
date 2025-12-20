@@ -8,6 +8,7 @@ import React from "react";
 import { cn } from "@/lib/cn";
 import { Button } from "@/components/Button";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 
 const links = [
   { href: "/", label: "Home" },
@@ -19,6 +20,7 @@ const links = [
 export function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = React.useState(false);
+  const reduce = useReducedMotion();
 
   React.useEffect(() => {
     setOpen(false);
@@ -39,7 +41,12 @@ export function Navbar() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden lg:flex items-center gap-1 rounded-2xl border border-black/5 bg-white/50 px-2 py-1 shadow-emboss backdrop-blur dark:border-white/10 dark:bg-white/5 dark:shadow-emboss-dark">
+        <motion.nav
+          initial={reduce ? undefined : { opacity: 0, y: -16, scale: 0.98 }}
+          animate={reduce ? undefined : { opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="hidden lg:flex items-center gap-1 rounded-2xl border border-black/5 bg-white/50 px-2 py-1 shadow-emboss backdrop-blur dark:border-white/10 dark:bg-white/5 dark:shadow-emboss-dark"
+        >
           {links.map((l) => {
             const active = pathname === l.href;
             return (
@@ -47,17 +54,24 @@ export function Navbar() {
                 key={l.href}
                 href={l.href}
                 className={cn(
-                  "rounded-xl px-3 py-2 text-sm font-medium transition-colors",
+                  "relative rounded-xl px-3 py-2 text-sm font-medium transition-colors",
                   active
-                    ? "bg-brand-600 text-white"
+                    ? "text-white"
                     : "text-slate-800 hover:bg-black/5 dark:text-slate-100 dark:hover:bg-white/10"
                 )}
               >
-                {l.label}
+                {active ? (
+                  <motion.span
+                    layoutId="nav-pill"
+                    className="absolute inset-0 rounded-xl bg-brand-600"
+                    transition={{ type: "spring", stiffness: 520, damping: 22 }}
+                  />
+                ) : null}
+                <span className="relative z-10">{l.label}</span>
               </Link>
             );
           })}
-        </nav>
+        </motion.nav>
 
         <div className="flex items-center gap-2 shrink-0">
           <ThemeToggle className="inline-flex" />
@@ -81,8 +95,16 @@ export function Navbar() {
       </div>
 
       {/* Mobile menu */}
+      <AnimatePresence>
       {open ? (
-        <div className="lg:hidden border-t border-black/5 dark:border-white/10">
+        <motion.div
+          key="mobile"
+          initial={reduce ? undefined : { height: 0, opacity: 0, y: -12 }}
+          animate={reduce ? undefined : { height: "auto", opacity: 1, y: 0 }}
+          exit={reduce ? undefined : { height: 0, opacity: 0, y: -10 }}
+          transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
+          className="lg:hidden border-t border-black/5 dark:border-white/10 overflow-hidden"
+        >
           <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between pb-3">
               <ThemeToggle />
@@ -108,8 +130,9 @@ export function Navbar() {
               })}
             </div>
           </div>
-        </div>
+        </motion.div>
       ) : null}
+      </AnimatePresence>
     </header>
   );
 }

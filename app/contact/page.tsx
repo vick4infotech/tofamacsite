@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { Container } from "@/components/Container";
 import { MotionReveal } from "@/components/MotionReveal";
+import { MotionStagger, MotionItem } from "@/components/MotionStagger";
+import { HoverLift } from "@/components/HoverLift";
 import { Surface } from "@/components/Surface";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ContactForm } from "@/components/ContactForm";
@@ -27,8 +29,10 @@ export default function ContactPage() {
                     {site.email}
                   </a>
 
-                  <div className="mt-3 flex items-center gap-3">
-                    <a
+                  <MotionStagger className="mt-3 flex items-center gap-3">
+                    <MotionItem>
+                      <HoverLift y={-2} scale={1.03}>
+                        <a
                       href="https://www.facebook.com/tofamacseo"
                       target="_blank"
                       rel="noreferrer"
@@ -37,7 +41,11 @@ export default function ContactPage() {
                     >
                       <Facebook className="h-5 w-5 text-brand-700 dark:text-brand-300" />
                     </a>
-                    <a
+                      </HoverLift>
+                    </MotionItem>
+                    <MotionItem>
+                      <HoverLift y={-2} scale={1.03}>
+                        <a
                       href="https://www.instagram.com/tofamacseo"
                       target="_blank"
                       rel="noreferrer"
@@ -46,7 +54,11 @@ export default function ContactPage() {
                     >
                       <Instagram className="h-5 w-5 text-brand-700 dark:text-brand-300" />
                     </a>
-                    <a
+                      </HoverLift>
+                    </MotionItem>
+                    <MotionItem>
+                      <HoverLift y={-2} scale={1.03}>
+                        <a
                       href="https://www.x.com/tofamacseo"
                       target="_blank"
                       rel="noreferrer"
@@ -55,7 +67,9 @@ export default function ContactPage() {
                     >
                       <Twitter className="h-5 w-5 text-brand-700 dark:text-brand-300" />
                     </a>
-                  </div>
+                      </HoverLift>
+                    </MotionItem>
+                  </MotionStagger>
                 </div>
               </Surface>
 

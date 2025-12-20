@@ -11,7 +11,11 @@ export function MotionReveal({
   children,
   className,
   delay = 0,
-  y = 14,
+  /**
+   * Stronger default reveal distance for a more premium, noticeable motion.
+   * Keep it consistent site-wide so animations feel organized.
+   */
+  y = 34,
 }: {
   children: React.ReactNode;
   className?: string;
@@ -22,10 +26,28 @@ export function MotionReveal({
   return (
     <motion.div
       className={cn(className)}
-      initial={reduce ? false : { opacity: 0, y }}
-      whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
+      initial={
+        reduce
+          ? false
+          : {
+              opacity: 0,
+              y,
+              scale: 0.965,
+              filter: "blur(10px)",
+            }
+      }
+      whileInView={
+        reduce
+          ? undefined
+          : {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              filter: "blur(0px)",
+            }
+      }
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.55, ease: "easeOut", delay }}
+      transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1], delay }}
     >
       {children}
     </motion.div>

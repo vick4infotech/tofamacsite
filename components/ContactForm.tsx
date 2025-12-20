@@ -4,6 +4,8 @@ import React from "react";
 import { validateContact, ContactPayload } from "@/lib/validate";
 import { Surface } from "@/components/Surface";
 import { cn } from "@/lib/cn";
+import { MotionStagger, MotionItem } from "@/components/MotionStagger";
+import { HoverLift } from "@/components/HoverLift";
 
 type Status = "idle" | "sending" | "success" | "error";
 
@@ -62,32 +64,40 @@ export function ContactForm() {
   return (
     <Surface className="p-7 sm:p-9" tint="violet">
       <form onSubmit={onSubmit} className="grid gap-4">
+        <MotionStagger className="grid gap-4">
         <div className="grid gap-4 sm:grid-cols-2">
-          <Field
-            label="Full name"
-            value={form.name}
-            onChange={(v) => update("name", v)}
-            error={errors.name}
-            autoComplete="name"
-          />
-          <Field
-            label="Email"
-            value={form.email}
-            onChange={(v) => update("email", v)}
-            error={errors.email}
-            autoComplete="email"
-            inputMode="email"
-          />
+          <MotionItem>
+            <Field
+              label="Full name"
+              value={form.name}
+              onChange={(v) => update("name", v)}
+              error={errors.name}
+              autoComplete="name"
+            />
+          </MotionItem>
+          <MotionItem>
+            <Field
+              label="Email"
+              value={form.email}
+              onChange={(v) => update("email", v)}
+              error={errors.email}
+              autoComplete="email"
+              inputMode="email"
+            />
+          </MotionItem>
         </div>
 
-        <Field
-          label="Company (optional)"
-          value={form.company ?? ""}
-          onChange={(v) => update("company", v)}
-          error={errors.company}
-          autoComplete="organization"
-        />
+        <MotionItem>
+          <Field
+            label="Company (optional)"
+            value={form.company ?? ""}
+            onChange={(v) => update("company", v)}
+            error={errors.company}
+            autoComplete="organization"
+          />
+        </MotionItem>
 
+        <MotionItem>
         <div className="grid gap-2">
           <label className="text-sm font-semibold text-slate-950 dark:text-white">
             Message
@@ -108,33 +118,41 @@ export function ContactForm() {
             </p>
           ) : null}
         </div>
+        </MotionItem>
 
-        <button
-          type="submit"
-          disabled={status === "sending"}
-          className={cn(
-            "mt-2 inline-flex items-center justify-center rounded-xl px-4 py-3 text-sm font-semibold uppercase tracking-wide",
-            "bg-brand-600 text-white shadow-lg shadow-brand-600/20 transition-colors hover:bg-brand-700",
-            "disabled:cursor-not-allowed disabled:opacity-70"
-          )}
-        >
-          {status === "sending" ? "Sending..." : "Send message"}
-        </button>
+        <MotionItem>
+          <HoverLift y={-2} scale={1.005}>
+            <button
+              type="submit"
+              disabled={status === "sending"}
+              className={cn(
+                "mt-2 inline-flex w-full items-center justify-center rounded-xl px-4 py-3 text-sm font-semibold uppercase tracking-wide",
+                "bg-brand-600 text-white shadow-lg shadow-brand-600/20 transition-colors hover:bg-brand-700",
+                "disabled:cursor-not-allowed disabled:opacity-70"
+              )}
+            >
+              {status === "sending" ? "Sending..." : "Send message"}
+            </button>
+          </HoverLift>
+        </MotionItem>
 
-        {serverMessage ? (
-          <p
-            className={cn(
-              "text-sm font-medium",
-              status === "success"
-                ? "text-accent-700 dark:text-accent-300"
-                : status === "error"
-                ? "text-red-600 dark:text-red-300"
-                : "text-slate-700 dark:text-slate-200"
-            )}
-          >
-            {serverMessage}
-          </p>
-        ) : null}
+        <MotionItem>
+          {serverMessage ? (
+            <p
+              className={cn(
+                "text-sm font-medium",
+                status === "success"
+                  ? "text-accent-700 dark:text-accent-300"
+                  : status === "error"
+                  ? "text-red-600 dark:text-red-300"
+                  : "text-slate-700 dark:text-slate-200"
+              )}
+            >
+              {serverMessage}
+            </p>
+          ) : null}
+        </MotionItem>
+        </MotionStagger>
       </form>
     </Surface>
   );

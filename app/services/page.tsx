@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { Container } from "@/components/Container";
 import { MotionReveal } from "@/components/MotionReveal";
+import { MotionStagger, MotionItem } from "@/components/MotionStagger";
+import { HoverLift } from "@/components/HoverLift";
 import { Surface } from "@/components/Surface";
 import { Button } from "@/components/Button";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -78,24 +80,32 @@ export default function ServicesPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" />
                 </div>
-                <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                  <div className="rounded-2xl border border-black/5 bg-white/70 p-4 shadow-emboss backdrop-blur dark:border-white/10 dark:bg-white/10 dark:shadow-emboss-dark">
-                    <p className="text-sm font-semibold uppercase tracking-wide text-slate-950 dark:text-white">
-                      Modular engagement
-                    </p>
-                    <p className="mt-1 text-sm text-slate-700 dark:text-slate-200">
-                      Start where you need the most leverage.
-                    </p>
-                  </div>
-                  <div className="rounded-2xl border border-black/5 bg-white/70 p-4 shadow-emboss backdrop-blur dark:border-white/10 dark:bg-white/10 dark:shadow-emboss-dark">
-                    <p className="text-sm font-semibold uppercase tracking-wide text-slate-950 dark:text-white">
-                      Clear accountability
-                    </p>
-                    <p className="mt-1 text-sm text-slate-700 dark:text-slate-200">
-                      Priorities, owners, reporting, and outcomes.
-                    </p>
-                  </div>
-                </div>
+                <MotionStagger className="mt-4 grid gap-3 sm:grid-cols-2">
+                  <MotionItem>
+                    <HoverLift>
+                      <div className="rounded-2xl border border-black/5 bg-white/70 p-4 shadow-emboss backdrop-blur transition-colors dark:border-white/10 dark:bg-white/10 dark:shadow-emboss-dark">
+                        <p className="text-sm font-semibold uppercase tracking-wide text-slate-950 dark:text-white">
+                          Modular engagement
+                        </p>
+                        <p className="mt-1 text-sm text-slate-700 dark:text-slate-200">
+                          Start where you need the most leverage.
+                        </p>
+                      </div>
+                    </HoverLift>
+                  </MotionItem>
+                  <MotionItem>
+                    <HoverLift>
+                      <div className="rounded-2xl border border-black/5 bg-white/70 p-4 shadow-emboss backdrop-blur transition-colors dark:border-white/10 dark:bg-white/10 dark:shadow-emboss-dark">
+                        <p className="text-sm font-semibold uppercase tracking-wide text-slate-950 dark:text-white">
+                          Clear accountability
+                        </p>
+                        <p className="mt-1 text-sm text-slate-700 dark:text-slate-200">
+                          Priorities, owners, reporting, and outcomes.
+                        </p>
+                      </div>
+                    </HoverLift>
+                  </MotionItem>
+                </MotionStagger>
               </Surface>
             </MotionReveal>
           </div>
@@ -115,19 +125,24 @@ export default function ServicesPage() {
           <div className="mt-8">
             <Surface className="p-5 sm:p-6" tint="amber">
               <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-                {site.services.map((s) => {
-                  const Icon = serviceIcons[s.title] ?? Search;
-                  return (
-                    <a
-                      key={s.title}
-                      href={`#${slugify(s.title)}`}
-                      className="flex items-center gap-2 rounded-xl border border-black/5 bg-white/70 px-4 py-3 text-sm font-semibold uppercase tracking-wide text-slate-900 shadow-emboss transition-colors hover:bg-white dark:border-white/10 dark:bg-white/10 dark:text-white dark:shadow-emboss-dark dark:hover:bg-white/15"
-                    >
-                      <Icon className="h-4 w-4 text-brand-700 dark:text-brand-300" />
-                      <span>{s.title}</span>
-                    </a>
-                  );
-                })}
+                <MotionStagger className="contents">
+                  {site.services.map((s) => {
+                    const Icon = serviceIcons[s.title] ?? Search;
+                    return (
+                      <MotionItem key={s.title}>
+                        <HoverLift>
+                          <a
+                            href={`#${slugify(s.title)}`}
+                            className="flex items-center gap-2 rounded-xl border border-black/5 bg-white/70 px-4 py-3 text-sm font-semibold uppercase tracking-wide text-slate-900 shadow-emboss transition-colors hover:bg-white dark:border-white/10 dark:bg-white/10 dark:text-white dark:shadow-emboss-dark dark:hover:bg-white/15"
+                          >
+                            <Icon className="h-4 w-4 text-brand-700 dark:text-brand-300" />
+                            <span>{s.title}</span>
+                          </a>
+                        </HoverLift>
+                      </MotionItem>
+                    );
+                  })}
+                </MotionStagger>
               </div>
             </Surface>
           </div>
@@ -155,18 +170,19 @@ export default function ServicesPage() {
                         </div>
                       </div>
                     <div className="lg:col-span-7">
-                      <div className="grid gap-3 sm:grid-cols-2">
+                      <MotionStagger className="grid gap-3 sm:grid-cols-2">
                         {s.bullets.map((b) => (
-                          <div
-                            key={b}
-                            className="rounded-2xl border border-black/5 bg-white/70 p-4 shadow-emboss backdrop-blur dark:border-white/10 dark:bg-white/10 dark:shadow-emboss-dark"
-                          >
-                            <p className="text-sm font-semibold uppercase tracking-wide text-slate-950 dark:text-white">
-                              {b}
-                            </p>
-                          </div>
+                          <MotionItem key={b}>
+                            <HoverLift>
+                              <div className="rounded-2xl border border-black/5 bg-white/70 p-4 shadow-emboss backdrop-blur transition-colors dark:border-white/10 dark:bg-white/10 dark:shadow-emboss-dark">
+                                <p className="text-sm font-semibold uppercase tracking-wide text-slate-950 dark:text-white">
+                                  {b}
+                                </p>
+                              </div>
+                            </HoverLift>
+                          </MotionItem>
                         ))}
-                      </div>
+                      </MotionStagger>
 
                       <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
                         <Button href="/contact">

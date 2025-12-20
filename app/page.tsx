@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { Container } from "@/components/Container";
 import { MotionReveal } from "@/components/MotionReveal";
+import { MotionStagger, MotionItem } from "@/components/MotionStagger";
+import { HoverLift } from "@/components/HoverLift";
 import { Surface } from "@/components/Surface";
 import { Button } from "@/components/Button";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -87,22 +89,25 @@ export default function HomePage() {
                 </div>
 
                 <div className="mt-4 grid gap-3 sm:grid-cols-3">
-                  {pillars.map((p) => (
-                    <div
-                      key={p.title}
-                      className="rounded-2xl border border-black/5 bg-white/70 p-4 shadow-emboss backdrop-blur dark:border-white/10 dark:bg-white/10 dark:shadow-emboss-dark"
-                    >
-                      <p className="text-xs font-semibold uppercase tracking-widest text-brand-700/90 dark:text-brand-300/90">
-                        {p.title}
-                      </p>
-                      <p className="mt-2 text-sm font-semibold uppercase tracking-wide text-slate-950 dark:text-white">
-                        {p.headline}
-                      </p>
-                      <p className="mt-1 text-sm text-slate-700 dark:text-slate-200">
-                        {p.description}
-                      </p>
-                    </div>
-                  ))}
+                  <MotionStagger className="contents">
+                    {pillars.map((p) => (
+                      <MotionItem key={p.title}>
+                        <HoverLift>
+                          <div className="rounded-2xl border border-black/5 bg-white/70 p-4 shadow-emboss backdrop-blur transition-colors dark:border-white/10 dark:bg-white/10 dark:shadow-emboss-dark">
+                            <p className="text-xs font-semibold uppercase tracking-widest text-brand-700/90 dark:text-brand-300/90">
+                              {p.title}
+                            </p>
+                            <p className="mt-2 text-sm font-semibold uppercase tracking-wide text-slate-950 dark:text-white">
+                              {p.headline}
+                            </p>
+                            <p className="mt-1 text-sm text-slate-700 dark:text-slate-200">
+                              {p.description}
+                            </p>
+                          </div>
+                        </HoverLift>
+                      </MotionItem>
+                    ))}
+                  </MotionStagger>
                 </div>
               </Surface>
             </MotionReveal>
@@ -122,18 +127,22 @@ export default function HomePage() {
             </MotionReveal>
 
             <MotionReveal className="lg:col-span-7" delay={0.06}>
-              <div className="grid gap-4 sm:grid-cols-2">
+              <MotionStagger className="grid gap-4 sm:grid-cols-2">
                 {site.services.slice(0, 4).map((s) => (
-                  <Surface key={s.title} className="p-6" tint="emerald">
-                    <p className="text-base font-semibold uppercase tracking-wide text-slate-950 dark:text-white">
-                      {s.title}
-                    </p>
-                    <p className="mt-2 text-sm leading-relaxed text-slate-700 dark:text-slate-200">
-                      {s.summary}
-                    </p>
-                  </Surface>
+                  <MotionItem key={s.title}>
+                    <HoverLift>
+                      <Surface className="p-6" tint="emerald">
+                        <p className="text-base font-semibold uppercase tracking-wide text-slate-950 dark:text-white">
+                          {s.title}
+                        </p>
+                        <p className="mt-2 text-sm leading-relaxed text-slate-700 dark:text-slate-200">
+                          {s.summary}
+                        </p>
+                      </Surface>
+                    </HoverLift>
+                  </MotionItem>
                 ))}
-              </div>
+              </MotionStagger>
 
               <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <Button href="/services">View all Services</Button>
