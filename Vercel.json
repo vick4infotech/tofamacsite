@@ -1,0 +1,17 @@
+
+{
+  "rewrites": [
+    {
+      "source": "/blog",
+      "destination": "https://wp-origin.tofamacseo.com/blog"
+    },
+    {
+      "source": "/blog/:path*",
+      "destination": "https://wp-origin.tofamacseo.com/blog/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
