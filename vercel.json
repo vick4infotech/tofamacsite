@@ -1,5 +1,6 @@
-
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "nextjs",
   "rewrites": [
     {
       "source": "/blog",
@@ -8,10 +9,6 @@
     {
       "source": "/blog/:path*",
       "destination": "https://wp-origin.tofamacseo.com/blog/:path*"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
     }
   ]
 }
