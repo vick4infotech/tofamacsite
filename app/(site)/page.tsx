@@ -7,7 +7,7 @@ import { Surface } from "@/components/Surface";
 import { Button } from "@/components/Button";
 import { SectionHeading } from "@/components/SectionHeading";
 import { TypewriterCycle } from "@/components/TypewriterCycle";
-import { site } from "@/lib/site";
+import { getSiteSettings } from "@/lib/site-settings";
 import { asset } from "@/lib/assets";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
@@ -32,7 +32,8 @@ const pillars = [
   },
 ];
 
-export default function HomePage() {
+export default async function HomePage() {
+  const site = await getSiteSettings();
   return (
     <>
       <section className="relative pt-14 sm:pt-20">

@@ -6,7 +6,7 @@ import { HoverLift } from "@/components/HoverLift";
 import { Surface } from "@/components/Surface";
 import { Button } from "@/components/Button";
 import { SectionHeading } from "@/components/SectionHeading";
-import { site } from "@/lib/site";
+import { getSiteSettings } from "@/lib/site-settings";
 import { asset } from "@/lib/assets";
 import type { LucideIcon } from "lucide-react";
 import {
@@ -39,7 +39,8 @@ function slugify(s: string) {
     .replace(/(^-|-$)/g, "");
 }
 
-export default function ServicesPage() {
+export default async function ServicesPage() {
+  const site = await getSiteSettings();
   return (
     <>
       <section className="relative pt-14 sm:pt-20">

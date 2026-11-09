@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { site } from "@/lib/site";
+import {getSiteSettings} from "@/lib/site-settings";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
-export const metadata: Metadata = {
+export async function generateMetadata(): Promise<Metadata> {
+ const site=await getSiteSettings();
+ return {
   title: {
     default: `${site.name} | Tech driven SEO and digital visibility`,
     template: `%s | ${site.name}`,
@@ -24,6 +26,7 @@ export const metadata: Metadata = {
     description: site.description,
   },
 };
+}
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

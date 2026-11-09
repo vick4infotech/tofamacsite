@@ -54,7 +54,7 @@ export function ContactForm() {
       setStatus("success");
       setForm({ name: "", email: "", company: "", message: "" });
       setErrors({});
-      setServerMessage("Thanks. Your message has been sent. We will respond shortly.");
+      setServerMessage("Thanks. Your message has been received. We will respond shortly.");
     } catch {
       setStatus("error");
       setServerMessage("Network error. Please try again.");

@@ -1,37 +1,32 @@
-import { isAdmin, configReady } from "@/lib/admin-auth";
-import { LayoutDashboard, FileText, Images, MessageSquare, Users, Settings, ChevronDown, Bell, Search, ExternalLink, PenSquare, Eye, TrendingUp, Activity, ArrowUpRight, Menu, ShieldCheck, LockKeyhole, Clock3, Globe2, Plus, CircleHelp, LogOut } from "lucide-react";
-
+import {isAdmin,configReady} from "@/lib/admin-auth";
+import {LockKeyhole,ArrowUpRight,ShieldCheck} from "lucide-react";
+import {AdminWorkspace} from "./workspace";
+import {getSiteSettings} from "@/lib/site-settings";
+import {databaseReady} from "@/lib/db";
+import {getSupportMessages} from "@/lib/support";
 export const dynamic="force-dynamic";
 function Login({error,configured}:{error:boolean,configured:boolean}) {
  return <section className="admin-login-page"><div className="admin-login-card">
  <div className="admin-login-brand"><div className="admin-login-brand-mark">T</div><span>TOFAMAC <strong>SEO</strong></span></div>
  <div className="admin-login-icon"><LockKeyhole size={25}/></div>
- <h1>Welcome back</h1><p className="admin-muted">Sign in to your admin preview workspace.</p>
+ <h1>Welcome back</h1><p className="admin-muted">Sign in to your website administration.</p>
  {!configured&&<div className="admin-error">Admin login is not configured. Add ADMIN_PASSWORD and ADMIN_SESSION_SECRET to Vercel environment variables.</div>}
  {error&&<div className="admin-error">The username or password is incorrect. Please try again.</div>}
  <form action="/admin/login" method="POST" className="admin-login-form">
  <label htmlFor="username">Username</label><input id="username" name="username" type="text" defaultValue="admin" required autoComplete="username" />
- <div className="admin-between"><label htmlFor="password">Password</label><span className="admin-hint">Demo access</span></div>
+ <div className="admin-between"><label htmlFor="password">Password</label><span className="admin-hint">Secure access</span></div>
  <input id="password" name="password" type="password" placeholder="Enter your password" required autoComplete="current-password" />
  <button type="submit" disabled={!configured} className="admin-primary admin-login-button">Sign in to dashboard <ArrowUpRight size={17}/></button>
  </form><div className="admin-secure"><ShieldCheck size={15}/> Protected with a server-side login and secure session cookie</div>
- </div><p className="admin-login-bottom">© 2026 Tofamac SEO · Admin demo interface · <a href="/">Back to website</a></p></section>
+ </div><p className="admin-login-bottom">© 2026 Tofamac SEO · Admin interface · <a href="/">Back to website</a></p></section>
 }
-const activities=[{icon:"post",title:"New article drafted",detail:"5 ways to improve your search visibility",time:"2 hours ago"},{icon:"lead",title:"New contact enquiry",detail:"Website SEO consultation request",time:"Yesterday"},{icon:"page",title:"Homepage content updated",detail:"Hero section copy refreshed",time:"3 days ago"},{icon:"post",title:"Sample post published",detail:"Understanding technical SEO",time:"5 days ago"}];
-function Dashboard(){return <div className="admin-shell">
- <aside className="admin-sidebar"><div className="admin-side-logo"><div className="admin-side-mark">T</div><div>TOFAMAC <b>SEO</b><small>ADMIN PANEL</small></div></div>
- <p className="admin-nav-title">WORKSPACE</p><nav aria-label="Admin navigation"><a href="/admin" className="admin-nav-active"><LayoutDashboard size={19}/> Dashboard</a><span className="admin-nav-disabled"><FileText size={19}/> Posts <i>08</i></span><span className="admin-nav-disabled"><Images size={19}/> Media</span><span className="admin-nav-disabled"><MessageSquare size={19}/> Comments <i>03</i></span><span className="admin-nav-disabled"><Users size={19}/> Users</span></nav>
- <p className="admin-nav-title admin-nav-section">SYSTEM</p><nav><span className="admin-nav-disabled"><Settings size={19}/> Settings</span><span className="admin-nav-disabled"><CircleHelp size={19}/> Help & support</span></nav>
- <div className="admin-side-bottom"><div className="admin-demo-pill"><span></span> Preview mode</div><a href="/" className="admin-view-site"><Globe2 size={17}/> View website <ExternalLink size={14}/></a></div>
- </aside>
- <div className="admin-main"><header className="admin-topbar"><div className="admin-breadcrumb">Workspace <span>/</span> <strong>Overview</strong></div><div className="admin-top-actions"><span className="admin-search"><Search size={16}/> Search <kbd>⌘ K</kbd></span><span className="admin-bell"><Bell size={19}/><i/></span><div className="admin-avatar">A</div><span className="admin-profile-name">Admin <ChevronDown size={14}/></span><form action="/admin/logout" method="POST"><button className="admin-logout" title="Log out" type="submit"><LogOut size={17}/></button></form></div></header>
- <section className="admin-content"><div className="admin-heading"><div><div className="admin-eyebrow"><span/> MONDAY, NOVEMBER 2026 · DEMO</div><h1>Good to see you, Admin <span>👋</span></h1><p>Here's what's happening with your website today.</p></div><span className="admin-primary admin-fake-button"><Plus size={17}/> New post</span></div>
- <div className="admin-notice"><div className="admin-notice-icon"><ShieldCheck size={18}/></div><div><strong>This is a demonstration dashboard.</strong><p>All metrics and content shown below are sample data. The editing and management controls are intentionally inactive.</p></div></div>
- <div className="admin-stat-grid"><Stat icon={<Eye size={20}/>} title="Page views" value="12,486" delta="+12.8%" note="vs. previous month"/><Stat icon={<Users size={20}/>} title="Visitors" value="3,842" delta="+8.2%" note="vs. previous month"/><Stat icon={<FileText size={20}/>} title="Published posts" value="08" delta="+2 new" note="this month"/><Stat icon={<MessageSquare size={20}/>} title="Comments" value="24" delta="3 pending" note="sample activity"/></div>
- <div className="admin-panel-grid"><div className="admin-panel admin-overview-panel"><div className="admin-panel-head"><div><h2>Website overview</h2><p>Visitor activity snapshot</p></div><span className="admin-period">Last 7 days <ChevronDown size={14}/></span></div><div className="admin-chart-label"><strong>12,486</strong><span><TrendingUp size={15}/> +12.8%</span></div><div className="admin-chart"><div className="admin-chart-grid"><span>4k</span><span>3k</span><span>2k</span><span>1k</span><span>0</span></div><div className="admin-bars">{[38,55,44,67,60,83,74].map((v,i)=><div key={i} className="admin-bar-col"><div className="admin-bar-bg"><div className="admin-bar" style={{height:`${v}%`}}/></div><span>{["Mon","Tue","Wed","Thu","Fri","Sat","Sun"][i]}</span></div>)}</div></div></div>
- <div className="admin-panel"><div className="admin-panel-head"><div><h2>Quick actions</h2><p>Common content tasks</p></div></div><div className="admin-actions-list"><div><div className="admin-action-ico blue"><PenSquare size={19}/></div><span><strong>Write a new post</strong><small>Create your next blog article</small></span><ArrowUpRight size={17}/></div><div><div className="admin-action-ico violet"><Images size={19}/></div><span><strong>Manage media</strong><small>View and organize uploads</small></span><ArrowUpRight size={17}/></div><div><div className="admin-action-ico orange"><MessageSquare size={19}/></div><span><strong>Review comments</strong><small>See recent discussions</small></span><ArrowUpRight size={17}/></div><div><div className="admin-action-ico green"><Settings size={19}/></div><span><strong>Site settings</strong><small>Customize your preferences</small></span><ArrowUpRight size={17}/></div></div></div></div>
- <div className="admin-panel-grid admin-bottom-panels"><div className="admin-panel"><div className="admin-panel-head"><div><h2>Recent activity</h2><p>Latest actions across your website</p></div><Activity size={18} className="admin-light-icon"/></div><div className="admin-activity-list">{activities.map((a,i)=><div key={i} className="admin-activity-row"><div className="admin-activity-dot"><Clock3 size={16}/></div><div><strong>{a.title}</strong><p>{a.detail}</p></div><time>{a.time}</time></div>)}</div></div><div className="admin-panel admin-content-health"><div className="admin-panel-head"><div><h2>Content health</h2><p>A snapshot of your sample content</p></div></div><div className="admin-health-score"><div className="admin-score-circle"><strong>92</strong><span>/100</span></div><div><strong>Looking good!</strong><p>Your content is performing well in this illustrative report.</p></div></div><div className="admin-health-item"><span>SEO readiness</span><strong>94%</strong></div><div className="admin-progress"><span style={{width:"94%"}}/></div><div className="admin-health-item"><span>Content completeness</span><strong>88%</strong></div><div className="admin-progress"><span style={{width:"88%"}}/></div></div></div>
- <footer className="admin-footer">Tofamac SEO Admin Demo <span>·</span> UI preview only — not connected to WordPress</footer>
- </section></div></div>}
-function Stat({icon,title,value,delta,note}:{icon:React.ReactNode,title:string,value:string,delta:string,note:string}){return <div className="admin-stat"><div className="admin-stat-top"><span>{title}</span><div>{icon}</div></div><div className="admin-stat-value">{value}</div><p><strong>{delta}</strong> {note}</p></div>}
-export default async function AdminPage({searchParams}:{searchParams:Promise<{error?:string}>}) {const ready=configReady();const authed=await isAdmin();const query=await searchParams;return authed?<Dashboard/>:<Login error={query.error==="invalid"} configured={ready}/>}
+
+export default async function AdminPage({searchParams}:{searchParams:Promise<{error?:string}>}) {
+ const query=await searchParams;
+ if(!(await isAdmin()))return <Login error={query.error==="invalid"} configured={configReady()}/>;
+ const connected=databaseReady();
+ let messages: Awaited<ReturnType<typeof getSupportMessages>>=[];
+ let problem="";
+ if(connected){try{messages=await getSupportMessages()}catch{problem="Database tables not available. Run the supplied SQL in Supabase."}}
+ return <AdminWorkspace initialMessages={messages} initialSettings={await getSiteSettings()} connected={connected} problem={problem}/>;
+}

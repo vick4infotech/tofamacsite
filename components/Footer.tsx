@@ -1,10 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Container } from "@/components/Container";
-import { site } from "@/lib/site";
+import type { SiteSettings } from "@/lib/site-settings";
 import { Facebook, Instagram, Twitter } from "lucide-react";
 
-export function Footer() {
+export function Footer({site}:{site:SiteSettings}) {
   return (
     <footer className="border-t border-black/5 dark:border-white/10">
       <Container className="py-12">

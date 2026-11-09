@@ -13,7 +13,7 @@ export async function POST(request: NextRequest) {
    return response;
  }
  const response = NextResponse.redirect(url,303);
- response.cookies.set(COOKIE_NAME,createSession(),{httpOnly:true,secure:process.env.NODE_ENV==="production",sameSite:"lax",path:"/admin",maxAge:sessionMaxAge});
+ response.cookies.set(COOKIE_NAME,createSession(),{httpOnly:true,secure:process.env.NODE_ENV==="production",sameSite:"lax",path:"/",maxAge:sessionMaxAge});
  response.headers.set("Cache-Control","no-store");
  return response;
 }

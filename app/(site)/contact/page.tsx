@@ -6,11 +6,12 @@ import { HoverLift } from "@/components/HoverLift";
 import { Surface } from "@/components/Surface";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ContactForm } from "@/components/ContactForm";
-import { site } from "@/lib/site";
+import { getSiteSettings } from "@/lib/site-settings";
 import { asset } from "@/lib/assets";
 import { Facebook, Instagram, Twitter } from "lucide-react";
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const site = await getSiteSettings();
   return (
     <>
       <section className="relative pt-14 sm:pt-20">
